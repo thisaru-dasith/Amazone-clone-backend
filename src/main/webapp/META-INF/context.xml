@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/amazon" auth="Container" type="javax.sql.DataSource"
+              maxTotal="10" maxIdle="5" maxWaitMillis="-1"
+              username="root" password="th15@rud@51th" driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/dep7_amazon_clone"/>
+    <resource-ref>
+        <res-ref-name>jdbc/amazon</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</Context>
