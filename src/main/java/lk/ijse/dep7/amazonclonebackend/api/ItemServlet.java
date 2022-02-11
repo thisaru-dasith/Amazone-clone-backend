@@ -37,18 +37,29 @@ public class ItemServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-
+        // GET http://localhost:8080/amazon/items           <- All items
+        // GET http://localhost:8080/amazon/items?code=I001 <- Item I001
         try {
             Connection con = dataSource.getConnection();
             ItemService itemService = new ItemService(con);
-
-            List<ItemDTO> allItems = itemService.getAllItems();
             Jsonb jsonb = JsonbBuilder.create();
-            String s = jsonb.toJson(allItems);
             response.setContentType("application/json");
-            PrintWriter writer = response.getWriter();
-            writer.println(s);
+
+            String code = request.getParameter("code");
+            System.out.println(code);
+            if(code != null){
+                ItemDTO item = itemService.getItem(code);
+                if(item != null){
+                    response.getWriter().println(jsonb.toJson(item));
+                }else {
+                    response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                }
+            }else {
+                List<ItemDTO> allItems = itemService.getAllItems();
+                String s = jsonb.toJson(allItems);
+                PrintWriter writer = response.getWriter();
+                writer.println(s);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to obtain a new connection", e);
