@@ -35,4 +35,11 @@ class ItemServiceTest {
     void tearDown() throws SQLException {
         connection.close();
     }
+
+    @Test
+    void getItem() {
+        ItemDTO item = itemService.getItem("I001");
+        System.out.println(item);
+        assertNotNull(item);
+    }
 }

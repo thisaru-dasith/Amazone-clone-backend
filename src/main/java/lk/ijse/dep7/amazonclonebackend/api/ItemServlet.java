@@ -38,6 +38,7 @@ public class ItemServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+
         try {
             Connection con = dataSource.getConnection();
             ItemService itemService = new ItemService(con);
