@@ -16,7 +16,7 @@ import lk.ijse.dep7.amazonclonebackend.service.ItemService;
 
 import javax.sql.DataSource;
 
-@WebServlet(name = "helloServlet", value = "/item-servlet", loadOnStartup = 0)
+@WebServlet(name = "helloServlet", value = "/items", loadOnStartup = 0)
 public class ItemServlet extends HttpServlet {
 
     @Resource(name= "java:comp/env/jdbc/amazon")
