@@ -10,7 +10,7 @@ CREATE TABLE items(
 
 DROP TABLE items;
 
-INSERT INTO items
+INSERT INTO items (code, image, title, rating, unit_price, qty, description)
 VALUES ('I001',
         'https://m.media-amazon.com/images/I/71NTi82uBEL._AC_UL320_.jpg',
         'Apple AirPods with Charging Case',
